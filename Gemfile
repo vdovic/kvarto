@@ -39,7 +39,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 gem 'bootstrap-sass'
 
-
+gem 'devise'
 
 group :development, :test do
      gem 'sqlite3'
