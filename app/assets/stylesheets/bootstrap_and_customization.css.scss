@@ -2,11 +2,26 @@
 
 $body-bg:                                                   #ecf0f1;
 $font-family-sans-serif:                'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-$navbar-height:                                        45px;
+$navbar-height:                                        40px;
 $navbar-default-bg:                          white;
 $navbar-default-brand-color:      #c0392b;
 $brand-primary:                                    #c0392b;
 $jumbotron-bg:                                         white;
+$btn-warning-bg:				 #fce359; 
+$btn-warning-border: 		darken($btn-warning-bg, 1%);
+
+$btn-font-weight: bold;
+$btn-warning-color: #2C3E50;
+
+$font-size-base: 11px;
+$line-height-base: 1.428571429;
+
+$line-height-computed: floor(($font-size-base * $line-height-base));
+$navbar-padding-vertical: (($navbar-height - $line-height-computed) / 2);
+
+
+
+
 
 @import 'bootstrap';
 
@@ -17,3 +32,6 @@ $jumbotron-bg:                                         white;
 .navbar-brand {
      font-weight: bold;
 }
+
+body { padding-top: 70px; }
+
