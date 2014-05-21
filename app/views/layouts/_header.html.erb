@@ -16,20 +16,8 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
       <ul class="nav navbar-nav navbar-right nav-pills">
 
-     <!--     <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "About", about_path %></li>
-          <li>
-              <% if user_signed_in? %>
-                  <li><%= link_to "Account Settings", edit_user_registration_path %></li>
-                  <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
-              <% else %>
-          <li><%= link_to "Sign in", new_user_session_path %>          </li>
-           
-              <% end %>
 
-            -->
-          
-          </li>
+
 
           <li class="dropdown">
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -55,7 +43,17 @@
             </form>
           </li>
 
-
+     <!--     <li><%= link_to "Home", root_path %></li>
+          <li><%= link_to "About", about_path %></li> -->
+          <li>
+              <% if user_signed_in? %>
+                  <li><%= link_to "Account Settings", edit_user_registration_path %></li>
+                  <li><%= link_to "Log out", destroy_user_session_path, method: :delete %></li>
+              <% else %>
+            <li><%= link_to "Sign in", new_user_session_path %>          </li>
+           
+              <% end %>          
+          </li>
 
       </ul>
     </div><!-- /.navbar-collapse -->

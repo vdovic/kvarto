@@ -25,17 +25,21 @@ background-color: #00c;
 
 .mainPitch{
 	position:absolute; 
-	top:50px;
+	top:10px;
 	left: 10%;
-	background-color: #c30;
+	background-color: none;
 
 }
 
 .fixedcaption{
-    width:100%;
-    text-align:left;
+
     z-index: 2; position:relative;
     margin: 20px auto;	
+
   }
+
+#homeSlider{
+	position:relative;
+}
 
 

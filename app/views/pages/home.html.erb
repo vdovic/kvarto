@@ -48,187 +48,43 @@
       </div>
 <!-- Carousel END -->
 
-
-
-      
+   
 
       <div class="mainPitch">
         <div class="container">
           <div class="row">
             <div class="fixedcaption">
-              <form>
 
+              <div class="container">
                 <div class="container">
                   <%= render 'pages/searcharea' %>
                 </div>
+              </div>
 
 
-              </form>
             </div>
           </div>
 
         </div>
       </div>
+
+</div> 
+<!-- HomeSlider END-->
+
+
+
+
+
+<div class="container">
+  <div class="jumbotron center">
+       <h1>Welcome to my app!</h1>
+       <% if user_signed_in? %>
+            # do something
+       <% else %>
+         <p>
+           <%= link_to "Log in", new_user_session_path, class: "btn btn-default btn-lg" %>
+           <%= link_to "Sign up", new_user_registration_path, class: "btn btn-success btn-lg" %>
+         </p>
+    <% end %>  
 </div>
 
-
-
-
-
-
-<div class="jumbotron center">
-     <h1>Welcome to my app!</h1>
-     <% if user_signed_in? %>
-          # do something
-     <% else %>
-       <p>
-         <%= link_to "Log in", new_user_session_path, class: "btn btn-default btn-lg" %>
-         <%= link_to "Sign up", new_user_registration_path, class: "btn btn-success btn-lg" %>
-       </p>
-  <% end %>  
-
-
-
-
-<div class="row">
-  <div class="col-lg-6">
-    <div class="input-group">
-      <div class="input-group-btn">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
-      </div><!-- /btn-group -->
-      <input type="text" class="form-control">
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-  <div class="col-lg-6">
-    <div class="input-group">
-      <input type="text" class="form-control">
-      <div class="input-group-btn">
-        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
-        <ul class="dropdown-menu pull-right">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
-      </div><!-- /btn-group -->
-    </div><!-- /input-group -->
-  </div><!-- /.col-lg-6 -->
-</div><!-- /.row -->
-
-
-<div class="input-group">
-  <div class="input-group-btn">
-     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">Action <span class="caret"></span></button>
-        <ul class="dropdown-menu">
-          <li><a href="#">Action</a></li>
-          <li><a href="#">Another action</a></li>
-          <li><a href="#">Something else here</a></li>
-          <li class="divider"></li>
-          <li><a href="#">Separated link</a></li>
-        </ul>
-
-    <!-- Button and dropdown menu -->
-  </div>
-  <input type="text" class="form-control">
-</div>
-
-
-
-<div class="input-group">
-  <input type="text" class="form-control">
-  <div class="input-group-btn">
-    <!-- Button and dropdown menu -->
-  </div>
-</div>
-
-<div class="well well-lg">...
-
-	<ul class="list-group">
-	  <li class="list-group-item">Cras justo odio</li>
-	  <li class="list-group-item">Dapibus ac facilisis in</li>
-	  <li class="list-group-item">Morbi leo risus</li>
-	  <li class="list-group-item">Porta ac consectetur ac</li>
-	  <li class="list-group-item">Vestibulum at eros</li>
-	</ul>
-
-</div>
-
-<div class="panel panel-default">
-  <!-- Default panel contents -->
-  <div class="panel-heading">Panel heading</div>
-  <div class="panel-body">
-    <p>...</p>
-  </div>
-
-  <!-- Table -->
-  <table class="table">
-    ...
-  </table>
-</div>
-
-<ul class="list-group">
-  <li class="list-group-item">
-    <span class="badge">14</span>
-    Cras justo odio
-  </li>
-</ul>
-
-<div class="list-group">
-  <a href="#" class="list-group-item active">
-    Cras justo odio
-  </a>
-  <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-  <a href="#" class="list-group-item">Morbi leo risus</a>
-  <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-  <a href="#" class="list-group-item">Vestibulum at eros</a>
-</div>
-
-<ul class="list-group">
-  <li class="list-group-item list-group-item-success">Dapibus ac facilisis in</li>
-  <li class="list-group-item list-group-item-info">Cras sit amet nibh libero</li>
-  <li class="list-group-item list-group-item-warning">Porta ac consectetur ac</li>
-  <li class="list-group-item list-group-item-danger">Vestibulum at eros</li>
-</ul>
-<div class="list-group">
-  <a href="#" class="list-group-item list-group-item-success">Dapibus ac facilisis in</a>
-  <a href="#" class="list-group-item list-group-item-info">Cras sit amet nibh libero</a>
-  <a href="#" class="list-group-item list-group-item-warning">Porta ac consectetur ac</a>
-  <a href="#" class="list-group-item list-group-item-danger">Vestibulum at eros</a>
-</div>
-
-<div class="list-group">
-  <a href="#" class="list-group-item active">
-    <h4 class="list-group-item-heading">List group item heading</h4>
-    <p class="list-group-item-text">...</p>
-  </a>
-</div>
-
-
-
-<div class="vertical-container" class="panel panel-default">
-          <div class="panel-heading">teste</div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-lg-6" style="padding-right:20px; border-right: 1px solid #ccc;">
-                       <label class="form-control"> Teste</label>
-                        <input type="button" class="form-control btn-danger" value="example" /><br/>
-                         <input type="button" class="form-control btn-danger" value="example" /><br/>
-                         <input type="button" class="form-control btn-danger" value="example" /><br/>
-                         <input type="button" class="form-control btn-danger" value="example" /><br/>
-                    </div>
-                    <div class="col-lg-6"  style="width:30px; margin:0 auto;"  >
-                            <input type="button"   value="botão" />
-                     </div>
-                      </div>
-            </div>
-        </div>
-
-        </div>
