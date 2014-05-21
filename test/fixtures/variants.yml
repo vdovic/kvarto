@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  kimnatYa: MyString
+  typYa: MyString
+  mistoYa: MyString
+  kimnatVin: MyString
+  typVin: MyString
+  mistoVin: MyString
+  description: MyString
+
+two:
+  kimnatYa: MyString
+  typYa: MyString
+  mistoYa: MyString
+  kimnatVin: MyString
+  typVin: MyString
+  mistoVin: MyString
+  description: MyString
