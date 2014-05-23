@@ -40,6 +40,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 gem 'bootstrap-sass'
 
 gem 'devise'
+gem 'paperclip', '~> 3.0'
 
 group :development, :test do
      gem 'sqlite3'

@@ -20,7 +20,7 @@ class VariantsController < ApplicationController
   def create
     @variant = current_user.variants.build(variant_params)
       if @variant.save
-        redirect_to @variant, notice: 'Variant was successfully created.'
+        redirect_to @variant, notice: 'Варіант був успішно доданий.'
       else
         render action: 'new'
       end
@@ -28,7 +28,7 @@ class VariantsController < ApplicationController
   
   def update
      if @variant.update(variant_params)
-        redirect_to @variant, notice: 'Variant was successfully updated.'
+        redirect_to @variant, notice: 'Варіант був успішно доданий.'
       else
         render action: 'edit'
       end
@@ -52,6 +52,6 @@ def destroy
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def variant_params
-      params.require(:variant).permit(:kimnatYa, :typYa, :mistoYa, :kimnatVin, :typVin, :mistoVin, :description)
+      params.require(:variant).permit(:kimnatYa, :typYa, :mistoYa, :kimnatVin, :typVin, :mistoVin, :description, :image)
     end
 end
