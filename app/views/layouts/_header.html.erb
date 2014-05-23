@@ -38,9 +38,8 @@
 
 
           <li>
-            <form action="#">
-              <button class="btn btn-default navbar-btn btn-warning" type: "button">Розмістити оголошення</button>
-            </form>
+            <%= button_to "Розмістити оголошення", new_variant_path, :class => "btn btn-default navbar-btn btn-warning", :method => :get  %>
+
           </li>
 
      <!--     <li><%= link_to "Home", root_path %></li>

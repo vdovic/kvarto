@@ -1,44 +1,33 @@
-<h1>Listing variants</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Зображення</th>
-      <th>Кількість кімнат (Я)</th>
-      <th>Тип помешкання (Я)</th>
-      <th>Місто (Я)</th>
-      <th>Кількість кімнат (Ти)</th>
-      <th>Тип помешкання (Ти)</th>
-      <th>Місто (Ти)</th>
-      <th>Опис</th>
-      <th>Емейл </th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @variants.each do |variant| %>
-      <tr>
-        <td><%= image_tag variant.image.url(:thumb) %></td>
-        <td><%= variant.kimnatYa %></td>
-        <td><%= variant.typYa %></td>
-        <td><%= variant.mistoYa %></td>
-        <td><%= variant.kimnatVin %></td>
-        <td><%= variant.typVin %></td>
-        <td><%= variant.mistoVin %></td>
-        <td><%= variant.description %></td>
-        <td><%= variant.user.email if variant.user%></td>
-        <td><%= link_to 'Show', variant %></td>
-        <% if variant.user == current_user%>
-        <td><%= link_to 'Edit', edit_variant_path(variant) %></td>
-        <td><%= link_to 'Destroy', variant, method: :delete, data: { confirm: 'Ви дійсно бажаєте видалити цей варіант?' } %></td>
-        <% end %>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-<% if user_signed_in? %>
+<!-- <% if user_signed_in? %>
   <%= link_to 'New Variant', new_variant_path %>
-<% end %>
+<% end %> -->
+
+<div id="variants" class="transitions-enabled">
+    <% @variants.each do |variant| %>
+       <div class="box panel panel-default"> 
+        <%= image_tag variant.image.url(:medium) %>
+        <div class="panel-body">
+          <%= variant.kimnatYa %>
+          <%= variant.typYa %>
+          <%= variant.mistoYa %>
+          <h6 style="font-weight:bold">міняю на:</h6>
+          <%= variant.kimnatVin %>
+          <%= variant.typVin %>
+          <%= variant.mistoVin %>
+          <%= variant.description %>
+          
+          <%= link_to 'Show', variant %>
+          
+          <% if variant.user == current_user%>
+            <%= variant.user.email if variant.user%>
+            <%= link_to 'Edit', edit_variant_path(variant) %>
+            <%= link_to 'Destroy', variant, method: :delete, data: { confirm: 'Ви дійсно бажаєте видалити цей варіант?' } %>
+          <% end %>
+      </div>
+    </div>
+    <% end %>
+</div>
+
+<ul>
+            <%= button_to "Розмістити оголошення", new_variant_path, :class => "btn btn-default navbar-btn btn-warning", :method => :get  %>
+</ul>
