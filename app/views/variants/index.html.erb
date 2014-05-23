@@ -10,6 +10,7 @@
       <th>Typvin</th>
       <th>Mistovin</th>
       <th>Description</th>
+      <th>User_ID</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -24,14 +25,18 @@
         <td><%= variant.typVin %></td>
         <td><%= variant.mistoVin %></td>
         <td><%= variant.description %></td>
+        <td><%= variant.user.email if variant.user%></td>
         <td><%= link_to 'Show', variant %></td>
+        <% if variant.user == current_user%>
         <td><%= link_to 'Edit', edit_variant_path(variant) %></td>
         <td><%= link_to 'Destroy', variant, method: :delete, data: { confirm: 'Ви дійсно бажаєте видалити цей варіант?' } %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Variant', new_variant_path %>
+<% if user_signed_in? %>
+  <%= link_to 'New Variant', new_variant_path %>
+<% end %>

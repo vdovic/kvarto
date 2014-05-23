@@ -35,5 +35,9 @@
   <%= @variant.description %>
 </p>
 
-<%= link_to 'Edit', edit_variant_path(@variant) %> |
+<% if @variant.user == current_user%>
+  <%= link_to 'Edit', edit_variant_path(@variant) %> |
+<% end %>
+
+
 <%= link_to 'Back', variants_path %>

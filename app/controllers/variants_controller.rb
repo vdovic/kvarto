@@ -1,5 +1,7 @@
 class VariantsController < ApplicationController
   before_action :set_variant, only: [:show, :edit, :update, :destroy]
+  before_action :correct_user, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   def index
     @variants = Variant.all
@@ -9,14 +11,14 @@ class VariantsController < ApplicationController
   end
 
   def new
-    @variant = Variant.new
+    @variant = current_user.variants.build
   end
 
   def edit
   end
 
   def create
-    @variant = Variant.new(variant_params)
+    @variant = current_user.variants.build(variant_params)
       if @variant.save
         redirect_to @variant, notice: 'Variant was successfully created.'
       else
@@ -41,6 +43,11 @@ def destroy
     # Use callbacks to share common setup or constraints between actions.
     def set_variant
       @variant = Variant.find(params[:id])
+    end
+
+    def correct_user
+      @variant = current_user.variants.find_by(id: params[:id])
+      redirect_to variants_path, notice: "Ви не є автором цього варіанту і не можете вносити зміни до нього" if @variant.nil?
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
