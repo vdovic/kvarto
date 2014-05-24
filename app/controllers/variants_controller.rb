@@ -4,8 +4,8 @@ class VariantsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
 
   def index
-    @variants = Variant.all
-  end
+   @variants = Variant.all.order("created_at DESC").paginate(:page => params[:page], :per_page =>3)
+ end
 
   def show
   end

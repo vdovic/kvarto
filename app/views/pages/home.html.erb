@@ -75,6 +75,7 @@
 
 <div class="container">
   <div class="jumbotron center">
+    <div id="blob-bg" style="display: block; opacity: 1;"></div>
        <h1>Welcome to my app!</h1>
        <% if user_signed_in? %>
             # do something
@@ -85,4 +86,7 @@
          </p>
     <% end %>  
 </div>
+
+
+<div id="blob-bg" style="display: block; z-index: 10;"></div>
 

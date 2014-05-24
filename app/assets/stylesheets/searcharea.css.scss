@@ -39,3 +39,16 @@
 	position: relative;
 }
 
+#blob-bg {
+	display:none;
+	width:600px;
+	height:180px;
+	position:absolute;
+	left:50%;
+	margin-left:210px;
+	margin-top:80px;
+	background:url(https://a0.muscache.com/airbnb/static/landing_pages/home_v2/homepage-sprite-54617e9d9dbd7f5e375a5667bb7a393f.png) 0px 0px no-repeat;
+	z-index:-2;
+	border-radius:50px;
+	inset: 0 0 2em 2em khaki;
+}
