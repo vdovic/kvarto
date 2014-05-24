@@ -1,0 +1,55 @@
+
+<%= link_to 'Back', variants_path %>
+
+<div class="row">
+  <div class="col-md-offset-2 col-md-8">
+    <div class="panel panel-default">
+
+      <div class="panel-heading center">
+            <%= image_tag @variant.image.url(:medium) %>
+      </div>
+      <div class="panel-body">
+            <p>
+              <strong>Kimnatya:</strong>
+              <%= @variant.kimnatYa %>
+            </p>
+
+            <p>
+              <strong>Typya:</strong>
+              <%= @variant.typYa %>
+            </p>
+
+            <p>
+              <strong>Mistoya:</strong>
+              <%= @variant.mistoYa %>
+            </p>
+
+            <p>
+              <strong>Kimnatvin:</strong>
+              <%= @variant.kimnatVin %>
+            </p>
+
+            <p>
+              <strong>Typvin:</strong>
+              <%= @variant.typVin %>
+            </p>
+
+            <p>
+              <strong>Mistovin:</strong>
+              <%= @variant.mistoVin %>
+            </p>
+
+            <p>
+              <strong>Description:</strong>
+              <%= @variant.description %>
+            </p>
+
+            <%= link_to edit_variant_path(@variant) do %>
+              <span class="glyphicon glyphicon-edit"></span>
+              Редагувати
+            <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -24,6 +24,12 @@ $grid-gutter-width: 30px;
 $container-tablet: ((720px + $grid-gutter-width));
 $container-sm: $container-tablet;
 $container-desktop: 940px;
+$panel-danger-heading-bg: green;
+$panel-inner-border: #ddd;
+$panel-default-border: #2C3E50;
+
+
+$font-size-h4: ceil(($font-size-base * 1.75));
 
 
 

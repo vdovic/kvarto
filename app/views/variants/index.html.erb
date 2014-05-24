@@ -1,3 +1,5 @@
+
+
 <!-- <% if user_signed_in? %>
   <%= link_to 'New Variant', new_variant_path %>
 <% end %> -->
@@ -5,24 +7,44 @@
 <div id="variants" class="transitions-enabled">
     <% @variants.each do |variant| %>
        <div class="box panel panel-default"> 
-        <%= image_tag variant.image.url(:medium) %>
+    <!--    <%= image_tag variant.image.url(:medium) %> -->
         <div class="panel-body">
+            <% if variant.user == current_user%>
+               <button type="button" class="btn btn-ttc">Save changes</button>
+              <button type="button" class="btn btn-success btn-xs">
+                <span class="glyphicon glyphicon-star"></span> Моє оголошення
+              </button>
+            <% end %>
+          <p>
           <%= variant.kimnatYa %>
           <%= variant.typYa %>
           <%= variant.mistoYa %>
+          </p>
           <h6 style="font-weight:bold">міняю на:</h6>
+          <p>
           <%= variant.kimnatVin %>
           <%= variant.typVin %>
           <%= variant.mistoVin %>
-          <%= variant.description %>
-          
-          <%= link_to 'Show', variant %>
-          
+
+          </p>
+          <p>
+          <%= link_to 'Докладніше', variant %>
+          </p>
           <% if variant.user == current_user%>
+            
+            <%= link_to edit_variant_path(variant) do %>
+              <span class="glyphicon glyphicon-edit"></span>
+              Редагувати
+            <% end %>
+            <%= link_to variant, method: :delete, data: { confirm: 'Are you sure?' } do %>
+              <span class="glyphicon glyphicon-trash"></span>
+              Видалити
+            <% end %>
+
+        
             <%= variant.user.email if variant.user%>
-            <%= link_to 'Edit', edit_variant_path(variant) %>
-            <%= link_to 'Destroy', variant, method: :delete, data: { confirm: 'Ви дійсно бажаєте видалити цей варіант?' } %>
           <% end %>
+
       </div>
     </div>
     <% end %>
@@ -31,3 +53,11 @@
 <ul>
             <%= button_to "Розмістити оголошення", new_variant_path, :class => "btn btn-default navbar-btn btn-warning", :method => :get  %>
 </ul>
+
+
+<h1>Варіанти (табличний вигляд)</h1>
+
+
+
+
+
