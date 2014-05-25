@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   resources :variants
 
   devise_for :users
-  root "pages#home"
+
+ root "variants#index"
 
   get "about" => "pages#about"
   

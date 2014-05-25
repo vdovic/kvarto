@@ -1,6 +1,6 @@
-<!-- <% if user_signed_in? %>
-  <%= link_to 'New Variant', new_variant_path %>
-<% end %> -->
+<div class="container">
+
+<%= render 'pages/searcharea' %>
 
 <div id="variants" class="transitions-enabled">
     <% @variants.each do |variant| %>
@@ -28,6 +28,9 @@
 
           </p>
           <p>
+          <%= variant.description %>
+        </p>
+          <p>
           <%= link_to 'Докладніше', variant %>
           </p>
           <% if variant.user == current_user%>
@@ -39,8 +42,9 @@
             <%= link_to variant, method: :delete, data: { confirm: 'Are you sure?' } do %>
               <span class="glyphicon glyphicon-trash"></span>
               Видалити
-            
-            <%= variant.user.name if variant.user%>
+                        <br>
+<p>
+            <%= variant.user.name if variant.user%> </p>
 
             <% end %>
 
@@ -53,22 +57,9 @@
     <% end %>
 </div>
 
-<ul>
-            <%= button_to "Розмістити оголошення", new_variant_path, :class => "btn btn-default navbar-btn btn-warning", :method => :get  %>
-</ul>
-
 <div class="container">
   <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
 </div>
 
-<h1>Варіанти (табличний вигляд)</h1>
 
-
-<form accept-charset="UTF-8" action="/clients" method="post">
-  <input type="text" name="client[name]" value="Acme" />
-  <input type="text" name="client[phone]" value="12345" />
-  <input type="text" name="client[address][postcode]" value="12345" />
-  <input type="text" name="client[address][city]" value="Carrot City" />
-</form>
-
-
+</div>
