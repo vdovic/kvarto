@@ -8,11 +8,11 @@
     <!--    <%= image_tag variant.image.url(:medium) %> -->
         <div class="panel-body">
             <% if variant.user == current_user%>
-
-              <button type="button" class="btn btn-success btn-xs">
-                <span class="glyphicon glyphicon-star"></span> Моє оголошення
+          <div align="right">
+              <button type="button" class="btn btn-info btn-xs">
+                <span class="glyphicon glyphicon-star"></span> <%= variant.kimnatYa[0,3] %>.=><%= variant.kimnatVin[0,3] %>
               </button>
-
+          </div>
             <% end %>
           <br>
           <p>
@@ -31,7 +31,7 @@
           <%= variant.description %>
         </p>
           <p>
-          <%= link_to 'Докладніше', variant %>
+          <%= link_to 'Докладніше...', variant %>
           </p>
           <% if variant.user == current_user%>
             
@@ -42,13 +42,11 @@
             <%= link_to variant, method: :delete, data: { confirm: 'Are you sure?' } do %>
               <span class="glyphicon glyphicon-trash"></span>
               Видалити
-                        <br>
-<p>
-            <%= variant.user.name if variant.user%> </p>
+
+
 
             <% end %>
 
-        
 
           <% end %>
 

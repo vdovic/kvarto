@@ -7,7 +7,8 @@
         <span class="icon-bar">ddd</span>
         <span class="icon-bar">ddd</span> -->
       </button>
-      <a class="navbar-brand" href="/">ЕЛЕКТРОННЕ БЮРО ОБМІНУ КВАРТИР</a>
+      <a class="navbar-brand" href="/">ЕЛЕКТРОННЕ БЮРО ОБМІНУ КВАРТИР  <span class="glyphicon glyphicon-refresh"></span>
+      </a>
     </div>
 
 
@@ -38,7 +39,9 @@
 
 
           <li>
-            <%= button_to "Розмістити оголошення", new_variant_path, :class => "btn btn-default navbar-btn btn-warning", :method => :get  %>
+            <%= button_to new_variant_path, :class => "btn btn-default navbar-btn btn-warning", :method => :get  do %>
+                  <span class="glyphicon glyphicon-off"></span> Розмістити оголошення
+            <% end %>
 
           </li>
 

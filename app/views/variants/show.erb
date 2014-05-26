@@ -1,9 +1,17 @@
 
+
+
+
+
+<div class="container">
 <%= link_to 'Back', variants_path %>
 
 <div class="row">
-  <div class="col-md-offset-2 col-md-8">
-    <div class="panel panel-default">
+  <div class="panel panel-default col-md-6">
+
+
+  </div>
+  <div class="panel panel-default col-md-6">
 
       <div class="panel-heading center">
             <%= image_tag @variant.image.url(:medium) %>
@@ -27,8 +35,12 @@
               <span class="glyphicon glyphicon-edit"></span>
               Редагувати
             <% end %>
+            <div align="right">
+              <button type="button" class="btn btn-success btn-xs">
+                 <span class="glyphicon glyphicon-glass"></span> Надіслати запит 
+              </button>
+            </div>
       </div>
     </div>
-  </div>
 </div>
-
+</div>
