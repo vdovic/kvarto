@@ -1,0 +1,43 @@
+<% if @entry %>
+  <div class="container vocabulary-study" data-controller="flashcard">
+    <div class="page-header">
+      <h1>Study mode</h1>
+      <p class="lead">Practice a random word or phrase from your Google Sheet.</p>
+    </div>
+
+    <div class="flashcard" data-role="flashcard">
+      <div class="flashcard-section flashcard-term">
+        <h2><%= @entry.term %></h2>
+      </div>
+      <div class="flashcard-section flashcard-translation is-hidden" data-role="translation">
+        <h3>Translation</h3>
+        <p><%= @entry.translation.presence || 'No translation provided yet.' %></p>
+      </div>
+      <% if @entry.example.present? %>
+        <div class="flashcard-section flashcard-example is-hidden" data-role="example">
+          <h3>Example</h3>
+          <%= simple_format(@entry.example) %>
+        </div>
+      <% end %>
+      <% if @entry.notes.present? %>
+        <div class="flashcard-section flashcard-notes is-hidden" data-role="notes">
+          <h3>Notes</h3>
+          <%= simple_format(@entry.notes) %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="study-controls">
+      <button class="btn btn-primary btn-lg" data-action="toggle-translation">Reveal translation</button>
+      <% if @entry.example.present? || @entry.notes.present? %>
+        <button class="btn btn-default btn-lg" data-action="toggle-context">Show context</button>
+      <% end %>
+      <%= link_to 'Next word', study_vocabulary_entries_path, class: 'btn btn-success btn-lg' %>
+      <%= link_to 'View full entry', vocabulary_entry_path(@entry), class: 'btn btn-link btn-lg' %>
+    </div>
+
+    <div class="study-footer">
+      <p><strong>Tip:</strong> Keep the Google Sheet open in another tab to add new words. Every time you press <em>Sync now</em> on the library page your latest notes will appear here.</p>
+    </div>
+  </div>
+<% end %>

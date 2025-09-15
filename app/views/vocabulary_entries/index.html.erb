@@ -1,0 +1,109 @@
+<div class="container vocabulary-entries">
+  <div class="page-header">
+    <h1>Vocabulary Library</h1>
+    <p class="lead">Review everything you have collected in your Google Sheet.</p>
+  </div>
+
+  <% mapping_params = params[:column_mapping] || {} %>
+  <% mapping_params = mapping_params.to_unsafe_h if mapping_params.respond_to?(:to_unsafe_h) %>
+
+  <div class="row vocabulary-actions">
+    <div class="col-md-8">
+      <%= form_tag vocabulary_entries_path, method: :get, class: 'form-inline form-search' do %>
+        <div class="form-group">
+          <%= label_tag :query, 'Search vocabulary', class: 'sr-only' %>
+          <%= text_field_tag :query, @query, class: 'form-control input-lg', placeholder: 'Search words or translations' %>
+        </div>
+        <%= submit_tag 'Search', class: 'btn btn-primary btn-lg' %>
+        <% if @query.present? %>
+          <%= link_to 'Clear', vocabulary_entries_path, class: 'btn btn-default btn-lg' %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-md-4 text-right">
+      <%= link_to 'Start studying', study_vocabulary_entries_path, class: 'btn btn-success btn-lg study-button' %>
+    </div>
+  </div>
+
+  <div class="panel panel-default sync-panel">
+    <div class="panel-heading">
+      <h3 class="panel-title">Synchronise with Google Sheets</h3>
+    </div>
+    <div class="panel-body">
+      <p class="help-block">
+        Paste the <strong>CSV export link</strong> from your Google Sheet and press <em>Sync now</em>.
+        You can publish a sheet to the web or copy the link from <code>File → Share → Publish to the web → CSV</code>.
+      </p>
+      <%= form_tag sync_vocabulary_entries_path, method: :post, class: 'form-inline sync-form' do %>
+        <div class="form-group form-group-lg url-field">
+          <%= label_tag :sheet_url, 'Google Sheet CSV URL', class: 'sr-only' %>
+          <%= text_field_tag :sheet_url, params[:sheet_url].presence || ENV['GOOGLE_SHEET_CSV_URL'], class: 'form-control input-lg', placeholder: 'https://docs.google.com/spreadsheets/d/.../export?format=csv' %>
+        </div>
+        <%= submit_tag 'Sync now', class: 'btn btn-info btn-lg' %>
+
+        <div class="advanced-options">
+          <a class="advanced-toggle" data-toggle="collapse" href="#column-mapping" aria-expanded="false" aria-controls="column-mapping">
+            Advanced column mapping
+          </a>
+          <div class="collapse" id="column-mapping">
+            <p class="help-block">Only change these fields if your sheet uses different column headers.</p>
+            <div class="row">
+              <div class="col-sm-3">
+                <%= label_tag 'column_mapping_term', 'Term column' %>
+                <%= text_field_tag 'column_mapping[term]', mapping_params[:term] || mapping_params['term'], class: 'form-control', placeholder: 'Term' %>
+              </div>
+              <div class="col-sm-3">
+                <%= label_tag 'column_mapping_translation', 'Translation column' %>
+                <%= text_field_tag 'column_mapping[translation]', mapping_params[:translation] || mapping_params['translation'], class: 'form-control', placeholder: 'Translation' %>
+              </div>
+              <div class="col-sm-3">
+                <%= label_tag 'column_mapping_example', 'Example column' %>
+                <%= text_field_tag 'column_mapping[example]', mapping_params[:example] || mapping_params['example'], class: 'form-control', placeholder: 'Example' %>
+              </div>
+              <div class="col-sm-3">
+                <%= label_tag 'column_mapping_notes', 'Notes column' %>
+                <%= text_field_tag 'column_mapping[notes]', mapping_params[:notes] || mapping_params['notes'], class: 'form-control', placeholder: 'Notes' %>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <% if @entries.present? %>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover vocabulary-table">
+        <thead>
+          <tr>
+            <th>Term</th>
+            <th>Translation</th>
+            <th>Example</th>
+            <th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @entries.each do |entry| %>
+            <%= render partial: 'entry', locals: { entry: entry } %>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="text-center">
+      <% if defined?(BootstrapPagination::Rails) %>
+        <%= will_paginate @entries, renderer: BootstrapPagination::Rails %>
+      <% else %>
+        <%= will_paginate @entries %>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="jumbotron">
+      <h2>Your vocabulary list is empty</h2>
+      <p>Synchronise with your Google Sheet to start building your personal dictionary.</p>
+      <p>
+        <%= link_to 'Sync now', '#column-mapping', class: 'btn btn-info btn-lg', data: { toggle: 'collapse' } %>
+        <%= link_to 'Start studying', study_vocabulary_entries_path, class: 'btn btn-success btn-lg' %>
+      </p>
+    </div>
+  <% end %>
+</div>

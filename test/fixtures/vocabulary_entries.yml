@@ -1,0 +1,5 @@
+sample:
+  term: Hello
+  translation: Привіт
+  example: Hello there!
+  notes: Greeting used when meeting someone.
