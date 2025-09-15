@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Елекронне бюро обміну квартир</title>
+  <title>Lexicon Coach</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -12,9 +12,18 @@
 
      <%= render 'layouts/header' %>
 
-     <% flash.each do |name, msg| %>
-     		<%= content_tag(:div, msg, class: "alert alert-info") %>
-		 <% end %>
+     <% if flash.any? %>
+       <div class="container">
+         <% flash.each do |name, msg| %>
+           <% css_class = case name.to_sym
+                         when :notice then 'alert-success'
+                         when :alert then 'alert-danger'
+                         else 'alert-info'
+                         end %>
+           <%= content_tag(:div, msg, class: "alert #{css_class}") %>
+         <% end %>
+       </div>
+     <% end %>
 
 
           <%= yield %>

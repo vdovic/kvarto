@@ -1,28 +1,46 @@
-== README
+= Lexicon Coach
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Lexicon Coach is a simple Rails application that turns a Google Sheet into a personal English vocabulary trainer. Add new words and phrases to the spreadsheet you already maintain, sync them into the app and review them through a searchable library and flashcard-style study mode.
 
-Things you may want to cover:
+== Prerequisites
 
-* Ruby version
+* Ruby (the container ships with Ruby 3.4.x)
+* Bundler
+* SQLite (for development and test)
 
-* System dependencies
+== Setup
 
-* Configuration
+1. Install gems with `bundle install`.
+2. Run `bundle exec rake db:migrate` to create the database tables.
+3. Start the server with `bundle exec rails server` and visit `http://localhost:3000`.
 
-* Database creation
+== Connecting a Google Sheet
 
-* Database initialization
+The importer expects a CSV export of your sheet. The easiest approach is to publish the sheet to the web (`File → Share → Publish to the web → CSV`). Copy the URL that ends with `export?format=csv`.
 
-* How to run the test suite
+You can either paste this URL into the sync form on the home page each time or set the `GOOGLE_SHEET_CSV_URL` environment variable.
 
-* Services (job queues, cache servers, search engines, etc.)
+=== Column mapping
 
-* Deployment instructions
+By default the importer looks for the following header names:
 
-* ...
+* `Term`
+* `Translation`
+* `Example`
+* `Notes`
 
+If your sheet uses different headers use the “Advanced column mapping” section in the sync form to specify the names. The importer will update existing entries (matched by the term) and add new ones automatically.
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+== Studying vocabulary
+
+Open the “Study” page to get a random flashcard. Use the buttons to reveal the translation, show additional context and move on to another word. Every time you press “Sync now” the latest version of your spreadsheet is reflected in the app.
+
+== Tests
+
+Run the test suite with:
+
+```
+bundle exec rake test
+```
+
+Some of the legacy gems in this project were written for Ruby 2.0 and may not install cleanly on modern Ruby versions. If bundler fails you may need to upgrade the dependencies or run the application inside a Ruby 2.0 compatible environment.

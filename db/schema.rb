@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140525151415) do
+ActiveRecord::Schema.define(version: 20240705120000) do
 
   create_table "pins", force: true do |t|
     t.string   "name"
@@ -58,5 +58,19 @@ ActiveRecord::Schema.define(version: 20140525151415) do
   end
 
   add_index "variants", ["user_id"], name: "index_variants_on_user_id"
+
+  create_table "vocabulary_entries", force: true do |t|
+    t.string   "term",             null: false
+    t.string   "translation"
+    t.text     "example"
+    t.text     "notes"
+    t.string   "source_url"
+    t.integer  "sheet_row_number"
+    t.datetime "last_synced_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "vocabulary_entries", ["term"], name: "index_vocabulary_entries_on_term", unique: true
 
 end

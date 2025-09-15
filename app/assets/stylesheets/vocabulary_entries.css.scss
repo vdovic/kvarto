@@ -1,0 +1,104 @@
+.vocabulary-entries {
+  padding-top: 30px;
+
+  .page-header {
+    margin-top: 0;
+  }
+
+  .form-search {
+    margin-bottom: 20px;
+  }
+
+  .sync-panel {
+    margin-top: 25px;
+
+    .url-field {
+      width: 100%;
+      margin-bottom: 15px;
+
+      input {
+        width: 100%;
+      }
+    }
+
+    .advanced-options {
+      margin-top: 15px;
+
+      .advanced-toggle {
+        display: inline-block;
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .vocabulary-table {
+    margin-top: 30px;
+
+    td.term {
+      font-weight: bold;
+    }
+
+    td.example,
+    td.notes {
+      min-width: 180px;
+    }
+  }
+}
+
+.vocabulary-entry-show {
+  padding-top: 30px;
+
+  .panel {
+    box-shadow: 0 3px 9px rgba(0, 0, 0, 0.1);
+  }
+
+  .study-actions {
+    margin-top: 20px;
+  }
+}
+
+.vocabulary-study {
+  padding-top: 30px;
+  text-align: center;
+
+  .flashcard {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    margin: 0 auto 30px;
+    max-width: 680px;
+    padding: 40px;
+  }
+
+  .flashcard-section + .flashcard-section {
+    margin-top: 20px;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 20px;
+  }
+
+  .study-controls > * {
+    margin: 0 5px 10px;
+  }
+
+  .study-footer {
+    color: #777;
+  }
+}
+
+.flashcard-section.is-hidden {
+  display: none;
+}
+
+.navbar-spacer {
+  height: 70px;
+}
+
+.vocabulary-navbar {
+  background-color: #ffffff;
+  border-bottom: 1px solid #e7e7e7;
+
+  .navbar-brand {
+    font-weight: 600;
+    letter-spacing: 0.5px;
+  }
+}

@@ -1,12 +1,19 @@
 Rails.application.routes.draw do
 
+  resources :vocabulary_entries, only: [:index, :show] do
+    collection do
+      get :study
+      post :sync
+    end
+  end
+
   resources :pins
 
   resources :variants
 
   devise_for :users
 
- root "variants#index"
+  root "vocabulary_entries#index"
 
   get "about" => "pages#about"
   
